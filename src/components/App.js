@@ -7,6 +7,7 @@ export default class App extends React.Component {
 
     // init service
     this.monzo = new Monzo()
+    this.monzo.auth()
   }
 
   async componentWillMount() {
