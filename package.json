@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --hot",
+    "start": "webpack-dev-server --hot --env.NODE_ENV=dev",
     "precommit": "lint-staged",
     "lint": "eslint src/. test/. --config .eslintrc.json",
     "linting": "yarn lint --watch"

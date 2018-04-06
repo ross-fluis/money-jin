@@ -1,3 +1,5 @@
+const fs = require('fs')
+const webpack = require('webpack')
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -24,5 +26,13 @@ module.exports = {
       components: path.resolve(__dirname, 'src/components/'),
     },
   },
-  plugins: [HtmlWebpackPluginConfig],
+  plugins: [
+    HtmlWebpackPluginConfig,
+    new webpack.DefinePlugin({
+      CONFIG:
+        process.env.NODE_ENV === 'production'
+          ? null
+          : JSON.parse(fs.readFileSync('./devConfig.json')),
+    }),
+  ],
 }

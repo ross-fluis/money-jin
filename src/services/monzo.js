@@ -1,4 +1,3 @@
-import devSettings from '../devSettings'
 export default class Monzo {
   get BASE_URL() {
     return 'https://api.monzo.com'
@@ -26,8 +25,10 @@ export default class Monzo {
   }
 
   async auth() {
-    if (devSettings.devMode) {
-      this.headers = ['authorization', 'Bearer ' + devSettings.accessToken]
+    console.log(process, CONFIG)
+
+    if (process.CONFIG) {
+      this.headers = ['authorization', 'Bearer ' + CONFIG.accessToken]
     } else {
       // oauth login goes here
       this.headers = null
